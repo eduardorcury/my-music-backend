@@ -1,6 +1,13 @@
 micronaut:
   application:
     name: mymusic
+  server:
+    cors:
+      enabled: true
+      configurations:
+        web:
+          allowedOrigins:
+            - http://localhost:4200
 netty:
   default:
     allocator:
