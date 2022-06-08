@@ -19,8 +19,9 @@ class PesquisaController(
 
     @Get("/pesquisa")
     @Produces(MediaType.APPLICATION_JSON)
-    fun pesquisaPorAlbum(@QueryValue("album") album: String) : HttpResponse<List<AlbumDTO>> {
-        val albums = pesquisaService.pesquisaPorAlbum(album) ?: return HttpResponse.noContent()
+    fun pesquisaPorAlbum(@QueryValue("album") album: String,
+                         @QueryValue(value = "quantidade", defaultValue = "5") quantidade: Int) : HttpResponse<List<AlbumDTO>> {
+        val albums = pesquisaService.pesquisaPorAlbum(album, quantidade) ?: return HttpResponse.noContent()
         return HttpResponse.ok(albums.map { item: Album -> item.toDTO() })
     }
 

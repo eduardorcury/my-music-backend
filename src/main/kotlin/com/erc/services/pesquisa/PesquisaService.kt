@@ -14,9 +14,9 @@ class PesquisaService(
         @Inject val autorizadorService: AutorizadorService
 ) {
 
-    fun pesquisaPorAlbum(texto : String) : List<Album>? {
+    fun pesquisaPorAlbum(texto : String, quantidade : Int) : List<Album>? {
         val token: String = autorizadorService.gerarToken() ?: throw HttpStatusException(HttpStatus.UNAUTHORIZED, "Erro ao buscar token")
-        val albuns = spotifyClient.buscaAlbum(pesquisa = texto, token = "Bearer $token")
+        val albuns = spotifyClient.buscaAlbum(pesquisa = texto, token = "Bearer $token", limite = quantidade)
         return albuns.body()
                 ?.itens
                 ?.albums
