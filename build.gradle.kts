@@ -48,6 +48,11 @@ tasks {
             jvmTarget = "11"
         }
     }
+    jar {
+        manifest {
+            attributes(mapOf("Main-Class" to "com.erc.ApplicationKt"))
+        }
+    }
 }
 graalvmNative.toolchainDetection.set(false)
 micronaut {
