@@ -1,3 +1,3 @@
 
-rootProject.name="mymusic"
+rootProject.name="my-music"
 
