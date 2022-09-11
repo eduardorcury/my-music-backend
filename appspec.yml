@@ -1,11 +1,15 @@
 version: 0.0
 os: linux
 hooks:
-  ApplicationStart:
-    - location: scripts/start_server.sh
-      timeout: 120
-      runas: root
   ApplicationStop:
     - location: scripts/stop_server.sh
+      timeout: 120
+      runas: root
+  BeforeInstall:
+    - location: scripts/dockerhub_login.sh
+      timeout: 120
+      runas: root
+  ApplicationStart:
+    - location: scripts/start_server.sh
       timeout: 120
       runas: root

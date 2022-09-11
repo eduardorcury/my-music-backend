@@ -1,3 +1,1 @@
-docker stop $(docker ps -q)
-docker container prune
-docker rmi my-music:latest
+docker ps -aq | xargs docker stop | xargs docker rm
