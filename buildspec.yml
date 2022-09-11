@@ -20,4 +20,4 @@ phases:
   post_build:
     commands:
       - echo Imagem buildada em `date`. Fazendo o push para Dockerhub...
-      - docker push $DOCKERHUB_REPO:$IMAGE_TAG
+      - docker push eduardorcury/$DOCKERHUB_REPO:$IMAGE_TAG
