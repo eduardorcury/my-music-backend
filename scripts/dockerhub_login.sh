@@ -2,4 +2,4 @@ username=$(aws ssm get-parameters --region sa-east-1 --name dockerhub_username -
 password=$(aws ssm get-parameters --region sa-east-1 --name dockerhub_password --with-decryption --query "Parameters[0].Value")
 echo "$username"
 echo "$password"
-docker login --username username --password password
+docker login --username "$username" --password "$password"
