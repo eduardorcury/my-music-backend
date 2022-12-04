@@ -1,1 +1,3 @@
-docker run -d -p 8080:8080 --name my-music eduardorcury/my-music:latest
+CLIENT_ID=$(aws ssm get-parameters --region sa-east-1 --name spotify_client_id --with-decryption --query "Parameters[0].Value" --output text)
+CLIENT_SECRET=$(aws ssm get-parameters --region sa-east-1 --name spotify_client_secret --with-decryption --query "Parameters[0].Value" --output text)
+docker run -d -p 8080:8080 -e CLIENT_ID="$CLIENT_ID" -e CLIENT_SECRET="$CLIENT_SECRET" --name my-music eduardorcury/my-music:latest
