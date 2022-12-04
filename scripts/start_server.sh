@@ -1,1 +1,1 @@
-docker run -d -p 8080:8080 --name my-music my-music:latest
+docker run -d -p 8080:8080 --name my-music eduardorcury/my-music:latest
