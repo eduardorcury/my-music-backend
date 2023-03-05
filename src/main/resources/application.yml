@@ -8,6 +8,9 @@ micronaut:
         web:
           allowedOrigins:
             - http://localhost:4200
+  http:
+    client:
+      read-timeout: 30s
 netty:
   default:
     allocator:
