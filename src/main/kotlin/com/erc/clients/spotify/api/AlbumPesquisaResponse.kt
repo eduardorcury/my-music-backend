@@ -37,7 +37,7 @@ data class AlbumResponse(
                 return Album(
                         nome = this.nome,
                         uriSpotify = this.uriSpotify,
-                        urlImagem = this.imagens?.firstOrNull()?.uri,
+                        urlImagem = this.imagens?.firstOrNull { imagem -> imagem.comprimento == "300" }?.uri,
                         id = this.id,
                         artistas = this.artistas.map { artista -> Artista(nome = artista.nome) }.toList(),
                         dataDeLancamento = this.dataDeLancamento
