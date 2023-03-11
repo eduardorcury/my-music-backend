@@ -10,13 +10,13 @@ micronaut:
             - http://localhost:4200
   http:
     client:
-#     event-loop-group: custom-event-loop
-      read-timeout: 45s
-      connect-timeout: 45s
-#  netty:
-#    event-loops:
-#      custom-event-loop:
-#        num-threads: 20
+      event-loop-group: custom-event-loop
+      read-timeout: 25s
+      connect-timeout: 25s
+  netty:
+    event-loops:
+      custom-event-loop:
+        num-threads: 20
 spotify:
   credenciais:
     client_id: ${CLIENT_ID}
