@@ -10,7 +10,7 @@ micronaut:
             - http://localhost:4200
   http:
     client:
-#      event-loop-group: custom-event-loop
+#     event-loop-group: custom-event-loop
       read-timeout: 45s
       connect-timeout: 45s
 #  netty:
