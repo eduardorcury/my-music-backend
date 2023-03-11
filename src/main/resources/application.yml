@@ -12,6 +12,7 @@ micronaut:
     client:
       event-loop-group: custom-event-loop
       read-timeout: 45s
+      connect-timeout: 45s
   netty:
     event-loops:
       custom-event-loop:
