@@ -7,7 +7,7 @@ micronaut:
       configurations:
         web:
           allowedOrigins:
-            - http://localhost:4200
+            - http://my-music-webapp.s3-website-sa-east-1.amazonaws.com
   http:
     client:
       event-loop-group: custom-event-loop

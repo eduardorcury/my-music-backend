@@ -2,11 +2,8 @@ package com.erc.services.autorizacao
 
 import com.erc.clients.spotify.autorizacao.AutorizadorClient
 import io.micronaut.context.annotation.Property
-import io.micronaut.http.client.HttpClientConfiguration
 import jakarta.inject.Inject
 import jakarta.inject.Singleton
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import java.util.*
 
 @Singleton
