@@ -5,6 +5,7 @@ import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import jakarta.inject.Inject
+import java.net.URI
 
 @Controller
 class AutorizadorController(
@@ -17,8 +18,8 @@ class AutorizadorController(
     }
 
     @Get("/login")
-    fun login(): HttpResponse<String> {
-        return HttpResponse.redirect(service.login())
+    fun login(): HttpResponse<URI> {
+        return HttpResponse.ok(service.login())
     }
 
 }
