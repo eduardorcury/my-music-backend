@@ -13,6 +13,7 @@ micronaut:
       event-loop-group: custom-event-loop
       read-timeout: 25s
       connect-timeout: 25s
+      follow-redirects: false
   netty:
     event-loops:
       custom-event-loop:
@@ -25,3 +26,8 @@ spotify:
     url: https://accounts.spotify.com
   api:
     url: https://api.spotify.com/v1
+  scopes:
+    - user-read-recently-played
+    - user-read-private
+web:
+  redirect_url: http://my-music-webapp.s3-website-sa-east-1.amazonaws.com/home

@@ -16,4 +16,9 @@ class AutorizadorController(
         return HttpResponse.ok(service.gerarToken())
     }
 
+    @Get("/login")
+    fun login(): HttpResponse<String> {
+        return HttpResponse.redirect(service.login())
+    }
+
 }

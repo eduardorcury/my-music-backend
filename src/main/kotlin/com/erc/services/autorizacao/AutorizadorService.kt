@@ -4,6 +4,7 @@ import com.erc.clients.spotify.autorizacao.AutorizadorClient
 import io.micronaut.context.annotation.Property
 import jakarta.inject.Inject
 import jakarta.inject.Singleton
+import java.net.URI
 import java.util.*
 
 @Singleton
@@ -17,12 +18,30 @@ class AutorizadorService(
     @field:Property(name = "spotify.credenciais.client_secret")
     var clientSecret: String? = null
 
+    @field:Property(name = "web.redirect_url")
+    var redirectUrl: String? = null
+
+    @field:Property(name = "spotify.scopes")
+    var scopes: List<String> = emptyList()
+
     fun gerarToken(): String? {
         val credenciais = "${clientId}:${clientSecret}".encodeToByteArray().let {
             Base64.getEncoder().encodeToString(it)
         }
         val token = client.gerarToken(authorization = "Basic $credenciais")
         return token.body()?.token
+    }
+
+    fun login(): URI? {
+        val escopos = scopes.reduce { result, scope -> "$result $scope" }
+        val login = client.login(
+            client_id = clientId ?: "",
+            response_type = "code",
+            redirect_uri = redirectUrl ?: "",
+            state = UUID.randomUUID().toString(),
+            scope = escopos
+        )
+        return login.headers["location"]?.let { URI.create(it) }
     }
 
 }
