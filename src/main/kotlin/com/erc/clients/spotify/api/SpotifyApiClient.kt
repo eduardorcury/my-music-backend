@@ -17,6 +17,9 @@ interface SpotifyApiClient {
     fun buscaAlbum(@QueryValue("type") consultas: Array<String> = arrayOf("album"),
                    @QueryValue("limit") limite: Int = 10,
                    @QueryValue("q") pesquisa: String,
-                   @Header(AUTHORIZATION) token: String) : HttpResponse<AlbumPesquisaResponse>
+                   @Header(AUTHORIZATION) token: String): HttpResponse<AlbumPesquisaResponse>
+
+    @Get("/me/player/recently-played")
+    fun recentlyPlayed(@Header(AUTHORIZATION) token: String): HttpResponse<RecentlyPlayedResponse>
 
 }

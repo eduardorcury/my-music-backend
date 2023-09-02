@@ -25,10 +25,7 @@ class AutorizadorService(
     var scopes: List<String> = emptyList()
 
     fun gerarToken(): String? {
-        val credenciais = "${clientId}:${clientSecret}".encodeToByteArray().let {
-            Base64.getEncoder().encodeToString(it)
-        }
-        val token = client.gerarToken(authorization = "Basic $credenciais")
+        val token = client.gerarToken(authorization = "Basic ${encodeCredentials()}")
         return token.body()?.token
     }
 
@@ -42,6 +39,17 @@ class AutorizadorService(
             scope = escopos
         )
         return login.headers["location"]?.let { URI.create(it) }
+    }
+
+    fun exchange(code: String): String? {
+        val token = client.exchange(authorization = "Basic ${encodeCredentials()}", code = code, redirect_uri = redirectUrl)
+        return token.body()?.token
+    }
+
+    private fun encodeCredentials(): String {
+        return "${clientId}:${clientSecret}".encodeToByteArray().let {
+            Base64.getEncoder().encodeToString(it)
+        }
     }
 
 }
