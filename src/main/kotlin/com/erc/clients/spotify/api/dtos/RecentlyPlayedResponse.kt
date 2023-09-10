@@ -1,4 +1,4 @@
-package com.erc.clients.spotify.api
+package com.erc.clients.spotify.api.dtos
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
@@ -58,9 +58,4 @@ data class Context(
 
     @JsonProperty("href")
     val href: String,
-)
-
-data class ExternalUrls(
-    @JsonProperty("spotify")
-    val spotify: String
 )

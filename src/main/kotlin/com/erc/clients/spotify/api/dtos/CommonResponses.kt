@@ -1,4 +1,4 @@
-package com.erc.clients.spotify.api
+package com.erc.clients.spotify.api.dtos
 
 import com.erc.dominio.Album
 import com.erc.dominio.Artista
@@ -49,4 +49,9 @@ data class ImageResponse(
 
     @JsonProperty("url")
     val uri: String
+)
+
+data class ExternalUrls(
+    @JsonProperty("spotify")
+    val spotify: String
 )

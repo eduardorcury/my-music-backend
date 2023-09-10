@@ -1,4 +1,4 @@
-package com.erc.clients.spotify.api
+package com.erc.clients.spotify.api.dtos
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
