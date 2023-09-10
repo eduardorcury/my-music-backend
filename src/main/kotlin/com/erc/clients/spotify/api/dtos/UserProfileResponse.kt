@@ -11,7 +11,7 @@ data class UserProfileResponse(
     val displayName: String,
 
     @JsonProperty("email")
-    val email: String,
+    val email: String?,
 
     @JsonProperty("explicit_content")
     val explicitContent: ExplicitContent?,
@@ -43,7 +43,7 @@ data class UserProfileResponse(
 ) {
     fun toDomain(): UserProfile {
         return UserProfile(
-            email = this.email,
+            email = this.email ?: "",
             id = this.id,
             displayName = this.displayName
         )
