@@ -4,6 +4,7 @@ import aws.sdk.kotlin.services.dynamodb.DynamoDbClient
 import aws.sdk.kotlin.services.dynamodb.model.AttributeValue
 import aws.sdk.kotlin.services.dynamodb.model.PutItemRequest
 import com.erc.clients.spotify.api.SpotifyApiClient
+import io.micronaut.context.annotation.Property
 import jakarta.inject.Inject
 import jakarta.inject.Singleton
 import kotlinx.coroutines.runBlocking
@@ -12,6 +13,12 @@ import kotlinx.coroutines.runBlocking
 class SaveAlbumService(
     @Inject val spotifyClient: SpotifyApiClient
 ) {
+
+    @field:Property(name = "aws.dynamo_db.table_name")
+    var table: String? = null
+
+    @field:Property(name = "aws.dynamo_db.region")
+    var dynamoRegion: String? = null
 
     fun saveAlbum(albumId: String, albumRating: String, token: String) {
 
@@ -36,16 +43,15 @@ class SaveAlbumService(
         }
 
         val saveAlbumRequest = PutItemRequest {
-            tableName = "my-music-db"
+            tableName = table
             item = itemValues
         }
 
-        val putItemResponse = DynamoDbClient { region = "sa-east-1" }.use { ddb ->
+        DynamoDbClient { region = dynamoRegion }.use { ddb ->
             runBlocking {
                 ddb.putItem(saveAlbumRequest)
             }
         }
-        putItemResponse.toString()
     }
 
 }

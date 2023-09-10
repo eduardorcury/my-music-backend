@@ -6,5 +6,6 @@ data class Album(
         val urlImagem: String?,
         val id: String,
         val artistas: List<Artista>,
-        val dataDeLancamento: String
+        val dataDeLancamento: String,
+        val nota: String? = null
 )

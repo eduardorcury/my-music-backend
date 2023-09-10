@@ -6,5 +6,6 @@ data class AlbumDTO(
         val urlImagem: String?,
         val id: String,
         val artistas: List<String>,
-        val dataDeLancamento: String
+        val dataDeLancamento: String,
+        val nota: String? = null
 )
