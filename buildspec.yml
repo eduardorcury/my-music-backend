@@ -1,10 +1,13 @@
 version: 0.2
 
+env:
+  parameter-store:
+    DOCKERHUB_USERNAME: "dockerhub_username"
+    DOCKERHUB_PASSWORD: "dockerhub_password"
+
 phases:
   pre_build:
     commands:
-      - DOCKERHUB_USERNAME = aws ssm get-parameters --region sa-east-1 --name dockerhub_username --with-decryption --query "Parameters[0].Value" --output text
-      - DOCKERHUB_PASSWORD = aws ssm get-parameters --region sa-east-1 --name dockerhub_password --with-decryption --query "Parameters[0].Value" --output text
       - echo Logando no Dockerhub...
       - docker login --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASSWORD
   build:
