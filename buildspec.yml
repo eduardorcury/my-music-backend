@@ -9,6 +9,7 @@ phases:
   pre_build:
     commands:
       - echo Logando no Dockerhub...
+      - echo $DOCKERHUB_USERNAME $DOCKERHUB_PASSWORD
       - docker login --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASSWORD
   build:
     commands:
