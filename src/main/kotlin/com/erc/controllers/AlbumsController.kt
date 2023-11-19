@@ -18,18 +18,17 @@ class AlbumsController(
     @Inject val saveAlbumService: SaveAlbumService,
     @Inject val getAlbumService: GetAlbumService
 ) {
+    @Get
+    fun getAlbums(@Header(AUTHORIZATION) token: String) : HttpResponse<List<AlbumDTO>> {
+        val albums = getAlbumService.getAlbums(token)
+        return HttpResponse.ok(albums.map { item -> item.toDTO() })
+    }
 
     @Post
     fun saveAlbum(@Body album: SaveAlbumDTO,
                   @Header(AUTHORIZATION) token: String): HttpResponse<Any> {
         saveAlbumService.saveAlbum(album.albumId, album.albumRating, token)
         return HttpResponse.ok()
-    }
-
-    @Get
-    fun getAlbums(@Header(AUTHORIZATION) token: String) : HttpResponse<List<AlbumDTO>> {
-        val albums = getAlbumService.getAlbums(token)
-        return HttpResponse.ok(albums.map { item -> item.toDTO() })
     }
 
     @Get("/recently_played")
