@@ -27,7 +27,7 @@ class AlbumsController(
     @Post
     fun saveAlbum(@Body album: SaveAlbumDTO,
                   @Header(AUTHORIZATION) token: String): HttpResponse<Any> {
-        saveAlbumService.saveAlbum(album.albumId, album.albumRating, token)
+        saveAlbumService.saveAlbum(album.albumId, album.albumRating ?: "", token)
         return HttpResponse.ok()
     }
 
