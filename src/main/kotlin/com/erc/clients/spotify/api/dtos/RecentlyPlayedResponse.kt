@@ -17,10 +17,10 @@ data class RecentlyPlayedItem(
     val playedAt: String,
 
     @JsonProperty("context")
-    val context: Context,
+    val context: Context?,
 
     @JsonProperty("timestamp")
-    val timestamp: Long
+    val timestamp: Long?
 )
 
 data class Track(
@@ -43,13 +43,13 @@ data class Track(
     val externalUrls: ExternalUrls,
 
     @JsonProperty("duration_ms")
-    val durationMs: Long,
+    val durationMs: Long?,
 
     @JsonProperty("explicit")
-    val explicit: Boolean,
+    val explicit: Boolean?,
 
     @JsonProperty("popularity")
-    val popularity: Int,
+    val popularity: Int?,
 )
 
 data class Context(
