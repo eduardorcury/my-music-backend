@@ -8,6 +8,7 @@ micronaut:
         web:
           allowedOrigins:
             - http://my-music-webapp.s3-website-sa-east-1.amazonaws.com
+            - https://db0nnsq3215hs.cloudfront.net
             - http://localhost:4200
   http:
     client:
