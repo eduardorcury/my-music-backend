@@ -36,7 +36,7 @@ spotify:
     - user-read-recently-played
     - user-read-private
 web:
-  redirect_url: https://db0nnsq3215hs.cloudfront.net
+  redirect_url: https://db0nnsq3215hs.cloudfront.net/home
 aws:
   dynamo_db:
     region: "sa-east-1"
