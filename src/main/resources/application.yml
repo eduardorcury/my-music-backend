@@ -10,6 +10,10 @@ micronaut:
             - https://db0nnsq3215hs.cloudfront.net
             - http://my-music-webapp.s3-website-sa-east-1.amazonaws.com
             - http://localhost:4200
+          allowedMethods:
+            - GET
+            - POST
+            - OPTIONS
   http:
     client:
       event-loop-group: custom-event-loop
