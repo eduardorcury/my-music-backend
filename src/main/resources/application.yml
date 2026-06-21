@@ -38,6 +38,7 @@ spotify:
     - user-read-private
 web:
   redirect_url: https://db0nnsq3215hs.cloudfront.net/home
+  local_redirect_url: http://127.0.0.1:4200/home
 aws:
   dynamo_db:
     region: "sa-east-1"
